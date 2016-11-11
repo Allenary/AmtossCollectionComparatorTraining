@@ -1,0 +1,15 @@
+# Compiled source #
+###################
+*.dll
+*.dll.config
+*.pdb
+*.exe
+*.db
+
+#folders#
+#########
+*/bin/*
+*/obj/*
+packages/*
+TestResults/*
+.vs/*
