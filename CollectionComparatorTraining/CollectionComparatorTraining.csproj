@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ICollectionExtension.cs" />
     <Compile Include="MyCollectionComparator.cs" />
+    <Compile Include="MyCollectionComparator2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
