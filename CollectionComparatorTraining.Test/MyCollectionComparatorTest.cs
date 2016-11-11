@@ -1,9 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.ObjectModel;
-using CollectionComparatorTraining;
 
 namespace CollectionComparatorTraining.Test
 {
@@ -36,58 +33,75 @@ namespace CollectionComparatorTraining.Test
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnTrue_IfCollectionsHaveEqualElemaentsAndSameSortOrder()
         {
-            string message;
-            bool result = MyCollectionComparator<String>.Compare(CollectionAbcd(), CollectionAbcd(), out message);
+            var result = MyCollectionComparator2<String>.Compare(CollectionAbcd(), CollectionAbcd());
 
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(true, result.AreEquivalent);
         }
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnTrue_IfCollectionsHaveEqualElemaentsAndAreNotSorted()
         {
             string message;
-            bool result = MyCollectionComparator<String>.Compare(CollectionAbcd(), CollectionBadc(), out message);
+            var result = MyCollectionComparator2<String>.Compare(CollectionAbcd(), CollectionBadc());
 
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(true, result.AreEquivalent);
         }
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnFalse_IfCollectionsHaveDifferentElements()
         {
             string message;
-            bool result = MyCollectionComparator<String>.Compare(CollectionAbcd(), CollectionAbbc(), out message);
+            var result = MyCollectionComparator2<String>.Compare(CollectionAbcd(), CollectionAbbc());
 
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(false, result.AreEquivalent);
         }
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnFalse_IfCollectionsHaveDifferentElementCount()
         {
             string message;
-            bool result = MyCollectionComparator<String>.Compare(CollectionAbcd(), CollectionAbcde(), out message);
+            var result = MyCollectionComparator2<String>.Compare(CollectionAbcd(), CollectionAbcde());
 
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(false, result.AreEquivalent);
         }
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnFalse_IfFirstCollectionIsEmpty()
         {
             string message;
-            bool result = MyCollectionComparator<String>.Compare(EmptyCollection<String>(), CollectionAbcde(), out message);
+            var result = MyCollectionComparator2<String>.Compare(EmptyCollection<String>(), CollectionAbcde());
 
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(false, result.AreEquivalent);
         }
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnFalse_IfSecondCollectionIsEmpty()
         {
             string message;
-            bool result = MyCollectionComparator<String>.Compare(CollectionAbcde(), EmptyCollection<String>(), out message);
+            var result = MyCollectionComparator2<String>.Compare(CollectionAbcde(), EmptyCollection<String>());
 
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(false, result.AreEquivalent);
         }
         [TestMethod]
         public void MyCollectionComparator_ShouldReturnTrue_IfBothCollectionsAreEmpty()
         {
             string message;
-            bool result = MyCollectionComparator<String>.Compare(EmptyCollection<String>(), EmptyCollection<String>(), out message);
+            var result = MyCollectionComparator2<String>.Compare(EmptyCollection<String>(), EmptyCollection<String>());
 
-            Assert.AreEqual(true, result);
+            Assert.AreEqual(true, result.AreEquivalent);
+        }
+        [TestMethod]
+        public void MyCollectionComparator_ShouldReturnFalse_IfFirstCollectionIsNull()
+        {
+            var result = MyCollectionComparator2<String>.Compare(null, CollectionAbcde());
+            Assert.AreEqual(false, result.AreEquivalent);
+        }
+        [TestMethod]
+        public void MyCollectionComparator_ShouldReturnFalse_IfSecondCollectionIsNull()
+        {
+            var result = MyCollectionComparator2<String>.Compare(CollectionAbcde(), null);
+            Assert.AreEqual(false, result.AreEquivalent);
+        }
+        [TestMethod]
+        public void MyCollectionComparator_ShouldReturnTrue_IfBothCollectionAreNull()
+        {
+            var result = MyCollectionComparator2<String>.Compare(null, null);
+            Assert.AreEqual(true, result.AreEquivalent);
         }
     }
 }
