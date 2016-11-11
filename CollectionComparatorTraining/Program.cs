@@ -15,7 +15,7 @@ namespace CollectionComparatorTraining
             Collection<String> c2 = new Collection<String> { "a", "b", "b", "e" };
 
             string message="";
-            bool isEquivalent = new MyCollectionComparator<String>().Compare(c1, c2, out message);
+            bool isEquivalent = MyCollectionComparator<String>.Compare(c1, c2, out message);
 
             Console.WriteLine(isEquivalent+message);
             Console.ReadLine();
